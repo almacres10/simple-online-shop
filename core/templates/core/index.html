@@ -3,16 +3,16 @@
 {% block title %} Welcome {% endblock %}
 
 {% block content %}
-<div class="mt-6 px-6 py-12 bg-gray100 rounded-xl">
+{% comment %} Item terbaru {% endcomment %}
+<div class="mt-6 px-6 py-12 bg-gray-200 rounded-xl">
     <h2 class="mb-12 text-2xl text-center">Newest Items</h2>
 
-
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-5 gap-3">
         {% for item in items %}
-        <div>
+        <div class="w-full">
             <a href="{% url 'item:detail' item.id %}">
                 <div>
-                    <img src="{{ item.image.url }}" class="rounded-t-xl">
+                    <img src="{{ item.image.url }}" class="w-100 h-80 mx-auto">
                 </div>
 
                 <div class="p-6 bg-white rounded-b-xl">
@@ -23,18 +23,19 @@
         </div>
         {% endfor %}
     </div>
+
 </div>
 
-<div class="mt-6 px-6 py-12 bg-gray100 rounded-xl">
-    <h2 class="mb-12 text-2xl text-center">Categories</h2>
+{% comment %} Kategori item {% endcomment %}
+<div class="mt-6 px-6 py-12 bg-gray-100 rounded-xl">
+    <h2 class="mb-12 text-2xl text-center">Search by Category</h2>
 
-
-    <div class="grid grid-cols-3 gap-3">
+    <div class="grid grid-cols-6 gap-3">
     {% for category in categories %}
     <div>
         <a href="#">
             <div class="p-6 bg-white rounded-b-xl">
-                <h2 class="text-2xl">{{ item.title }}</h2>
+                <h2 class="text-2xl">{{ category.name }}</h2>
                 <p class="text-gray-500">{{ category.items.count}} items</p>
             </div>
         </a>
